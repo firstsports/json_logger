@@ -51,6 +51,7 @@ defmodule Logger.Backends.JSON do
     data = %{level: level, message: msg, pid: pid_str, node: node()}
     |> Map.merge(md
                  |> Iteraptor.to_flatmap("_")
+                 |> Stream.filter(&filter_nils/1)
                  |> Stream.filter(&filter_keys/1)
                  |> Stream.map(&(&1 |> prettify_keys |> stringify_values))
                  |> Enum.into(Map.new))
@@ -68,6 +69,9 @@ defmodule Logger.Backends.JSON do
 
   defp filter_keys({k, _}) when is_binary(k), do: !String.contains?(k, "__")
   defp filter_keys({_, _}), do: true
+
+  defp filter_nils({_, nil}), do: false
+  defp filter_nils({_, _}), do: true
 
   defp prettify_keys({k, v}) when is_binary(k), do: {k |> String.replace("%", "."), v}
   defp prettify_keys({k, v}), do: {k, v}
