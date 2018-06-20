@@ -8,7 +8,7 @@ defmodule Logger.Backends.JSON.Mixfile do
      deps: deps(),
      description: "A simple library for logging with JSON, best suited with Logstash.",
      package: package(),
-     source_url: "https://github.com/LeeroyDing/json_logger"]
+     source_url: "https://github.com/coingaming/json_logger"]
   end
 
   def application, do: []
@@ -16,7 +16,7 @@ defmodule Logger.Backends.JSON.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1"},
-      {:iteraptor, "~> 0.7"},
+      {:iteraptor, git: "git@github.com:coingaming/elixir-iteraptor.git", branch: "IH-476"},
     ]
   end
 
@@ -24,7 +24,7 @@ defmodule Logger.Backends.JSON.Mixfile do
     [
       maintainers: ["Leeroy Ding"],
       licenses: ["Apache License 2.0"],
-      links: %{"GitHub" => "https://github.com/LeeroyDing/json_logger"}
+      links: %{"GitHub" => "https://github.com/coingaming/json_logger"}
     ]
   end
 end
