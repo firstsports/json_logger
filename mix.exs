@@ -16,7 +16,7 @@ defmodule Logger.Backends.JSON.Mixfile do
   defp deps do
     [
       {:poison, "~> 3.1"},
-      {:iteraptor, git: "git@github.com:coingaming/elixir-iteraptor.git", branch: "IH-476"},
+      {:iteraptor, git: "git@github.com:firstsports/elixir-iteraptor.git", branch: "IH-476"},
     ]
   end
 
